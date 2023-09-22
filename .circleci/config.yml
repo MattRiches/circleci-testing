@@ -22,8 +22,7 @@ jobs:
           name: Build & Push Docker Image to Docker Hub
           command: |
             echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
-            docker build -t circleci-test/latest .
-            docker tag circleci-test:latest circleci-test:latest
+            docker build -t circleci-test:latest .
             docker push mattriches/circleci:latest
 
 
