@@ -24,7 +24,8 @@ jobs:
             echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
             docker build -t circleci-test/test-image .
             docker tag circleci-test:latest circleci-test:latest
-            docker push circleci-test:latest
+            docker push mattriches/circleci:latest
+
 
 
 workflows:
