@@ -11,7 +11,7 @@ jobs:
       - run:
           name: Build Docker Image
           command: |
-            # Build your Docker image
+            ## Build your Docker image
             docker build -t my-docker-image:latest .
 
 
@@ -34,7 +34,17 @@ workflows:
   build-and-deploy:
     jobs:
       - build
-      - deploy:
-          requires:
-            - build
-
+      - staging:
+          filters:
+            tags:
+              only:
+                  - /staging-.*/
+            branches:
+              ignore: /.*/
+      - production:
+          filters:
+            tags:
+              only:
+                  - /production-.*/
+            branches:
+              ignore: /.*/
