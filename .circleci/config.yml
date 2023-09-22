@@ -12,7 +12,7 @@ jobs:
           name: Build Docker Image
           command: |
             # Build your Docker image
-            docker build -t my-docker-username/my-docker-image .
+            docker build -t circleci-test/test-image .
 
 
   deploy:
@@ -27,7 +27,8 @@ jobs:
           name: Push Docker Image to Docker Hub
           command: |
             echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
-            docker push my-docker-username/my-docker-image
+            docker tag circleci-test:latest circleci-test:latest
+            docker push circleci-test:latest
 
 
 workflows:
