@@ -1,16 +1,10 @@
-# Use an official Ubuntu as a parent image
-FROM ubuntu:latest
+FROM ubuntu:20.04
 
-# Set non-interactive mode during installation
 ARG DEBIAN_FRONTEND=noninteractive
 
-# Update the package repository and install necessary software
 RUN apt-get update && \
     apt-get install -y apache2 mysql-server php libapache2-mod-php php-mysql
 
-# Configure MySQL root password (replace 'your_password' with a secure password)
-RUN echo "mysql-server mysql-server/root_password password your_password" | debconf-set-selections && \
-    echo "mysql-server mysql-server/root_password_again password your_password" | debconf-set-selections
 
 # Install PHP modules and enable Apache modules
 RUN a2enmod php7.4
