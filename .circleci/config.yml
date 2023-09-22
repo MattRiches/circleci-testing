@@ -15,7 +15,7 @@ jobs:
             docker build -t my-docker-image:latest .
 
 
-  deploy:
+  deploy-prod:
     docker:
       - image: docker:20.10.7 # Use the Docker version you prefer
     working_directory: ~/project
@@ -34,10 +34,10 @@ workflows:
   build-and-deploy:
     jobs:
       - build
-      - production:
+      - deplpoy-prod:
           filters:
             tags:
               only:
-                  - /production-.*/
+                  - /deploy-prod-.*/
             branches:
               ignore: /.*/
