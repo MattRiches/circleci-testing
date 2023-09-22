@@ -34,13 +34,6 @@ workflows:
   build-and-deploy:
     jobs:
       - build
-      - staging:
-          filters:
-            tags:
-              only:
-                  - /staging-.*/
-            branches:
-              ignore: /.*/
       - production:
           filters:
             tags:
