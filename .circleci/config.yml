@@ -23,7 +23,7 @@ jobs:
           command: |
             echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
             docker build -t circleci-test .
-            docker image tag circleci-test mattriches/circleci-test:latest
+            docker image tag circleci-test:latest  mattriches/circleci-test:latest
             docker image push mattriches/circleci:latest
 
 
